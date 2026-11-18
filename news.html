@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#17191f;--panel:#1f222a;--panel2:#242833;--ink:#e9ebf2;--dim:#9aa1b3;--lime:#b6ff3b;--amber:#ffb454;--red:#ff4757;--cyan:#5cc8ff;--line:#3a3f4d}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1024px;height:1024px;overflow:hidden;background:var(--bg);color:var(--ink);font-family:'Space Grotesk',sans-serif}
+.wrap{display:flex;flex-direction:column;height:1024px}
+.mast{padding:10px 22px 7px;border-bottom:2px solid var(--ink);display:flex;align-items:flex-end;justify-content:space-between}
+.kick{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.28em;color:var(--lime);margin-bottom:4px}
+.date{font-size:38px;font-weight:700;letter-spacing:-.02em;line-height:1}
+.sub{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--dim);letter-spacing:.14em;text-align:right}
+.sub b{color:var(--amber)}
+.hero{display:flex;gap:14px;padding:9px 22px;border-bottom:1px solid var(--line);background:var(--panel);align-items:center}
+.hn{font-size:11px;font-family:'IBM Plex Mono',monospace;color:var(--bg);background:var(--red);padding:4px 8px;font-weight:600;flex:none;align-self:stretch;display:flex;align-items:center;letter-spacing:.1em}
+.htxt h1{font-size:22px;font-weight:700;line-height:1.12;letter-spacing:-.01em}
+.htxt h1 em{font-style:normal;color:var(--red)}
+.htxt p{font-size:11px;color:var(--dim);margin-top:4px;line-height:1.35}
+.htxt p b{color:var(--ink)}
+.bands{flex:none;display:flex;flex-direction:column;gap:0;padding:0 22px}
+.band{display:flex;gap:12px;padding:4px 0;border-bottom:1px solid var(--line)}
+.rlabel{flex:none;width:96px;padding-top:3px}
+.rlabel .r{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.22em;color:var(--dim)}
+.rlabel .c{width:34px;height:3px;margin-top:5px}
+.cards{display:flex;gap:12px;flex:1}
+.card{flex:1;background:var(--panel);border:1px solid var(--line);border-top:2px solid var(--tag);padding:6px 9px 7px;min-width:0}
+.card .top{display:flex;align-items:center;gap:6px;margin-bottom:3px}
+.num{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;color:var(--bg);background:var(--tag);padding:1px 5px;flex:none}
+.tag{font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.12em;color:var(--dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.card h3{font-size:12px;font-weight:700;line-height:1.15;letter-spacing:-.01em}
+.card p{font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:var(--dim);line-height:1.3;margin-top:3px}
+.card p b{color:var(--lime);font-weight:500}
+.ic{float:right;width:30px;height:30px;margin:0 0 2px 6px;flex:none}
+.mapsec{display:flex;gap:18px;padding:7px 22px 5px;border-bottom:1px solid var(--line);background:var(--panel2)}
+.mapL{flex:none;width:150px}
+.sect{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.24em;color:var(--cyan);margin-bottom:4px}
+.legend{font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:var(--dim);line-height:1.7;margin-top:5px}
+.legend i{display:inline-block;width:8px;height:8px;margin-right:5px}
+
+.wire{display:block;padding:6px 22px 4px;border-bottom:1px solid var(--line)}
+.whead{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.24em;color:var(--cyan);margin-bottom:4px}
+.wcols{display:flex}
+
+.wcol{flex:1;padding-right:14px}
+.wcol+.wcol{padding-left:14px;border-left:1px solid var(--line)}
+.wi{display:flex;gap:7px;font-family:'IBM Plex Mono',monospace;font-size:8.5px;line-height:1.35;margin-bottom:3px;color:var(--ink)}
+.wi .wn{color:var(--bg);background:var(--dim);padding:0 4px;flex:none;font-weight:600;height:14px}
+.wi .wc{width:7px;height:7px;border-radius:50%;margin-top:3px;flex:none}
+.wi span.t{color:var(--dim)}
+.foot{padding:10px 22px 8px;display:flex;justify-content:space-between;align-items:center}
+.foot p{font-family:'IBM Plex Mono',monospace;font-size:7.5px;color:var(--dim);letter-spacing:.04em}
+.foot .mk{color:var(--lime)}
+svg text{font-family:'IBM Plex Mono',monospace}
+
+.mapbox{position:relative;width:340px;height:170px;flex:none}
+.mapbox img{width:340px;height:170px;display:block;border:1px solid var(--line)}
+.dot{position:absolute;width:16px;height:16px;border-radius:50%;transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;color:#17191f}
+.dot.cyan{background:var(--cyan)}.dot.amber{background:var(--amber)}.dot.red{background:var(--red)}.dot.lime{background:var(--lime)}
+</style></head>
+<body><div class="wrap">
+<div class="mast">
+  <div><div class="kick">THE DAY IN WORLD NEWS</div><div class="date">TUESDAY 17 NOVEMBER 2026</div></div>
+  <div class="sub">32 STORIES / <b>6 CONTINENTS</b> / ONE DAY<br>REPORTED · NUMBERED · SOURCED</div>
+</div>
+<div class="hero">
+  <div class="hn">01 UKRAINE</div>
+  <div class="htxt">
+    <h1>Ukrainian drones and missiles strike the <em>Kerch Bridge</em>, the link between Russia and occupied Crimea</h1>
+    <p>Zelenskyy calls the operation <b>"unprecedented"</b>; Moscow says the bridge was <b>damaged</b>.</p>
+  </div>
+</div>
+<div class="bands">
+  <div class="band"><div class="rlabel"><div class="r">EUROPE</div><div class="c" style="background:var(--cyan)"></div></div>
+    <div class="cards">
+      <div class="card" style="--tag:var(--red)"><div class="top"><div class="num">02</div><div class="tag">UN · UKRAINE WAR</div></div><h3>2026 civilian toll already worst in years</h3><p>UN: 2026 civilian casualties <b>far exceed</b> prior years.</p></div>
+      <div class="card" style="--tag:var(--cyan)"><div class="top"><div class="num">03</div><div class="tag">FRANCE · PROTESTS</div></div><h3>French public-sector marches stay peaceful, turnout falls</h3><p>Police counted <b>smaller crowds</b> than October.</p></div>
+      <div class="card" style="--tag:var(--lime)"><div class="top"><div class="num">04</div><div class="tag">GERMANY · ECONOMY</div></div><h3>ZEW morale jumps to 35.6</h3><p>Morale rose from <b>28.1</b>, beating forecasts, ZEW says.</p></div>
+      <div class="card" style="--tag:var(--amber)"><div class="top"><div class="num">05</div><div class="tag">BLACK SEA · SHIPPING</div></div><h3>Second commercial vessel sinks off Bulgaria</h3><p>Crew rescued after the <b>second sinking</b> this month.</p></div>
+    </div></div>
+  <div class="band"><div class="rlabel"><div class="r">ASIA-PAC</div><div class="c" style="background:var(--amber)"></div></div>
+    <div class="cards">
+      <div class="card" style="--tag:var(--amber)"><div class="top"><div class="num">06</div><div class="tag">MANILA · DIPLOMACY</div></div><h3>Trump opens Asia trip in Manila</h3><p>US-China-Russia <b>nuclear talks</b> with Xi and Putin come next; Japan-China leaders skipped ASEAN+3.</p></div>
+      <div class="card" style="--tag:var(--cyan)"><div class="top"><div class="num">07</div><div class="tag">QUAD · SECURITY</div></div><h3>Quad plans first antisubmarine drill</h3><p>Japan, US, Australia and India agree on a <b>first joint</b> exercise (Jiji).</p></div>
+      <div class="card" style="--tag:var(--red)"><div class="top"><div class="num">08</div><div class="tag">CHINA · TECH WAR</div></div><h3>Asian shares fall as US tightens AI-chip curbs</h3><p>KOSPI <b>-2%</b>; Nikkei lower as curbs bite.</p></div>
+      <div class="card" style="--tag:var(--lime)"><div class="top"><div class="num">09</div><div class="tag">CLIMATE · COP31</div></div><h3>COP31 enters decisive week</h3><p>Talks face <b>political friction</b> (UN News).</p></div>
+    </div></div>
+  <div class="band"><div class="rlabel"><div class="r">MIDEAST</div><div class="c" style="background:var(--red)"></div></div>
+    <div class="cards">
+      <div class="card" style="--tag:var(--red)"><div class="top"><div class="num">10</div><div class="tag">BAHRAIN · IRAN</div></div><h3>Iran drones hit US radar site in Bahrain</h3><p><b>Third attack</b> in days; drones intercepted, says Bahrain.</p></div>
+      <div class="card" style="--tag:var(--red)"><div class="top"><div class="num">11</div><div class="tag">GULF · TANKERS</div></div><h3>Five tankers hit near Hormuz</h3><p>Blasts heard on <b>Qeshm Island</b>; alerts raised.</p></div>
+      <div class="card" style="--tag:var(--amber)"><div class="top"><div class="num">12</div><div class="tag">YEMEN · PARLIAMENT</div></div><h3>Yemen designates Houthis terrorists</h3><p>Parliament approves the <b>terror label law</b>.</p></div>
+      <div class="card" style="--tag:var(--red)"><div class="top"><div class="num">13</div><div class="tag">WEST BANK</div></div><h3>Settler attack kills Palestinian woman, 72</h3><p><b>Ten wounded</b>, ministry says; Trump cites report of an Iranian "dirty bomb" plot in Washington as US weighs it seriously.</p></div>
+    </div></div>
+  <div class="band"><div class="rlabel"><div class="r">AMERICAS</div><div class="c" style="background:var(--lime)"></div></div>
+    <div class="cards">
+      <div class="card" style="--tag:var(--red)"><div class="top"><div class="num">14</div><div class="tag">MARKETS · AI</div></div><h3>AI selloff drags Wall Street down</h3><p>S&amp;P 500 <b>-1.1%</b>, Dow <b>-779</b>, Nasdaq <b>-1.5%</b>.</p></div>
+      <div class="card" style="--tag:var(--cyan)"><div class="top"><div class="num">15</div><div class="tag">HEALTH · PAHO</div></div><h3>US and Mexico lose measles-free status</h3><p>PAHO declaration; spread <b>highest in 30 years</b>.</p></div>
+      <div class="card" style="--tag:var(--amber)"><div class="top"><div class="num">16</div><div class="tag">TECH · NVIDIA</div></div><h3>Huang admits "serious mistakes", wants return</h3><p>Ex-CEO signals interest as the <b>board weighs</b> it.</p></div>
+      <div class="card" style="--tag:var(--lime)"><div class="top"><div class="num">17</div><div class="tag">US · POLITICS</div></div><h3>Mississippi elects Scott Colom governor</h3><p>Democrat becomes the state's <b>first Black governor</b>.</p></div>
+    </div></div>
+  <div class="band" style="border-bottom:none"><div class="rlabel"><div class="r">AFRICA + LATAM</div><div class="c" style="background:var(--amber)"></div></div>
+    <div class="cards">
+      <div class="card" style="--tag:var(--red)"><div class="top"><div class="num">18</div><div class="tag">SOUTH AFRICA</div></div><h3>Probe into shootings that left 17 dead</h3><p>Police probe a wave of killings; <b>17 dead</b>.</p></div>
+      <div class="card" style="--tag:var(--amber)"><div class="top"><div class="num">19</div><div class="tag">MOZAMBIQUE</div></div><h3>Opposition leader stands trial</h3><p>Over deadly <b>2024 protests</b>; hearing opened Tuesday.</p></div>
+      <div class="card" style="--tag:var(--lime)"><div class="top"><div class="num">20</div><div class="tag">BRAZIL · SENATE</div></div><h3>Brazil Senate works on $9.7bn budget plan</h3><p>Rate cuts hinge on a <b>fiscal fix</b>, Durigan tells Senate.</p></div>
+      <div class="card" style="--tag:var(--cyan)"><div class="top"><div class="num">21</div><div class="tag">KENYA · CITIES</div></div><h3>Nairobi's green identity under threat</h3><p>Construction boom drives <b>tree loss</b>, Africanews reports.</p></div>
+    </div></div>
+</div>
+<div class="mapsec">
+  <div class="mapL"><div class="sect">WHERE IT HAPPENED</div>
+    <div class="legend">
+      <i style="background:var(--cyan)"></i>Europe · 1-5<br>
+      <i style="background:var(--amber)"></i>Asia-Pacific · 6-8<br>
+      <i style="background:var(--red)"></i>Middle East · 10-13, 28<br>
+      <i style="background:var(--lime)"></i>Americas · 14-17<br>
+      <i style="background:var(--amber)"></i>Africa + LatAm · 18-21<br>
+      <span style="color:#6a7186">09 COP31 — venue not fixed on map</span>
+    </div></div>
+  <div class="mapbox"><img src="map.png" width="340" height="170" alt="">
+<div class="dot cyan" style="left:60.14%;top:24.83%"><span>1</span></div>
+<div class="dot cyan" style="left:58.89%;top:22.78%"><span>2</span></div>
+<div class="dot cyan" style="left:50.64%;top:23.89%"><span>3</span></div>
+<div class="dot cyan" style="left:52.78%;top:21.67%"><span>4</span></div>
+<div class="dot cyan" style="left:56.94%;top:26.11%"><span>5</span></div>
+<div class="dot amber" style="left:83.61%;top:41.89%"><span>6</span></div>
+<div class="dot amber" style="left:87.50%;top:36.11%"><span>7</span></div>
+<div class="dot amber" style="left:81.67%;top:33.33%"><span>8</span></div>
+<div class="dot red" style="left:64.03%;top:35.56%"><span>10</span></div>
+<div class="dot red" style="left:65.69%;top:35.28%"><span>11</span></div>
+<div class="dot red" style="left:63.06%;top:41.39%"><span>12</span></div>
+<div class="dot red" style="left:59.78%;top:32.22%"><span>13</span></div>
+<div class="dot lime" style="left:29.44%;top:27.39%"><span>14</span></div>
+<div class="dot lime" style="left:22.22%;top:32.22%"><span>15</span></div>
+<div class="dot lime" style="left:25.00%;top:31.39%"><span>16</span></div>
+<div class="dot lime" style="left:24.72%;top:33.06%"><span>17</span></div>
+<div class="dot amber" style="left:56.94%;top:65.83%"><span>18</span></div>
+<div class="dot amber" style="left:59.06%;top:64.39%"><span>19</span></div>
+<div class="dot lime" style="left:36.69%;top:58.78%"><span>20</span></div>
+<div class="dot amber" style="left:60.22%;top:50.72%"><span>21</span></div>
+<div class="dot red" style="left:66.67%;top:38.89%"><span>28</span></div>
+  </div>
+</div>
+<div class="wire">
+  <div class="whead">MORE FROM THE WIRE</div>
+  <div class="wcols">
+  <div class="wcol">
+    <div class="wi"><span class="wn">22</span><span class="wc" style="background:var(--cyan)"></span><span class="t">EUROPE —</span> Israel reshuffle as occupation grinds on</div>
+    <div class="wi"><span class="wn">23</span><span class="wc" style="background:var(--cyan)"></span><span class="t">IRELAND —</span> Two arrested after Cork murder</div>
+    <div class="wi"><span class="wn">24</span><span class="wc" style="background:var(--cyan)"></span><span class="t">SWEDEN —</span> Speaker meets party leaders over gridlock</div>
+    <div class="wi"><span class="wn">25</span><span class="wc" style="background:var(--cyan)"></span><span class="t">SPAIN —</span> Conservatives lead before Nov 29 election</div>
+  </div>
+  <div class="wcol">
+    <div class="wi"><span class="wn">26</span><span class="wc" style="background:var(--cyan)"></span><span class="t">UK —</span> Neets report: young people "losing hope"</div>
+    <div class="wi"><span class="wn">27</span><span class="wc" style="background:var(--lime)"></span><span class="t">US —</span> Apple outage joins FAA, United failures</div>
+    <div class="wi"><span class="wn">28</span><span class="wc" style="background:var(--red)"></span><span class="t">GULF —</span> Third US carrier reaches the Middle East</div>
+    <div class="wi"><span class="wn">29</span><span class="wc" style="background:var(--lime)"></span><span class="t">US —</span> Tiger Woods returns at Hero, Dec 3-6</div>
+  </div>
+  <div class="wcol">
+    <div class="wi"><span class="wn">30</span><span class="wc" style="background:var(--red)"></span><span class="t">MARKETS —</span> World markets drop; AI stocks pressured</div>
+    <div class="wi"><span class="wn">31</span><span class="wc" style="background:var(--amber)"></span><span class="t">S.AFRICA —</span> Two arrested in hospital fraud probe</div>
+    <div class="wi"><span class="wn">32</span><span class="wc" style="background:var(--amber)"></span><span class="t">DRC —</span> Ebola response active in the DRC</div>
+    <div class="wi"><span class="wn">33</span><span class="wc" style="background:var(--amber)"></span><span class="t">BRAZIL —</span> Students call protest over high rates</div>
+  </div>
+  </div>
+</div>
+<div class="foot">
+  <p>Every story was reported on <b style="color:var(--ink)">Tuesday 17 November 2026</b>; disputed claims are attributed. Sources: AP · Reuters · BBC · Al Jazeera · UN News · Jiji · Africanews · allAfrica · Buenos Aires Times.</p>
+  <p class="mk">NEWS-IMAGE-20261117 · 01</p>
+</div>
+</div></body></html>
